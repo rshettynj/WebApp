@@ -70,10 +70,10 @@
 				</dependencies>
 			</plugin>
 			<plugin>
-				 <!-- Add/update this in tomcat-home/conf/tomcat-users.xml file
+				  Add/update this in tomcat-home/conf/tomcat-users.xml file
 					<role rolename="manager-gui" />
-					<user username="tomcat" password="s3cret" roles="admin,tomcat,manager-gui,manager-script" />
-					Run the maven goal tomcat7:deploy to deploy your war package to tomcat server. -->
+					<user username="tomcat" password="tomcat" roles="admin,tomcat,manager-gui,manager-script" />
+				<!--	Run the maven goal tomcat7:deploy to deploy your war package to tomcat server. -->
 				
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
