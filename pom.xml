@@ -14,7 +14,7 @@
 	<scm>
 		<url>https://github.com/venkatasykam/DevOpsWebApp.git</url>
 		<connection>scm:git:https://github.com/venkatasykam/DevOpsWebApp.git</connection>
-		<developerConnection>scm:git:https://github.com/venkatasykam/DevOpsWebApp.git</developerConnection>
+		<developerConnection>scm:git:https://github.com/anooptcs/DevOpsWebApp.git</developerConnection>
 		<tag>master-WebApp-1.0.0-RC-4</tag>
 	</scm>
 	<dependencies>
