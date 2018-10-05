@@ -13,8 +13,8 @@
 	</properties>
 	<scm>
 		<url>https://github.com/venkatasykam/DevOpsWebApp.git</url>
-		<connection>scm:git:https://github.com/venkatasykam/DevOpsWebApp.git</connection>
-		<developerConnection>scm:git:https://github.com/anooptcs/DevOpsWebApp.git</developerConnection>
+		<connection>scm:githttps://github.com/anooptcs/WebApp.git</connection>
+		<developerConnection>scm:git:https://github.com/anooptcs/WebApp.git</developerConnection>
 		<tag>master-WebApp-1.0.0-RC-4</tag>
 	</scm>
 	<dependencies>
