@@ -36,7 +36,6 @@
 			<tr><td>3</td><td>CI/CD tools</td><td>Jenkins</td></tr>
 			<tr><td>4</td><td>Remote repositories</td><td>nexus</td></tr>
 			<tr><td>5</td><td>Scripting/Programming</td><td>Important Linux commands and Shell Script</td></tr>
-			<tr><td>5</td><td>Programming</td><td>Java/.net</td></tr>
 			<tr><td>6</td><td>Application Servers</td><td>TomCat</td></tr>
 			<tr><td>7</td><td>Code-qality Tools</td><td>SonarQuebe etc.</td></tr>
 			<tr><td>8</td><td>Issue/Project management</td><td>JIRA, Confluence</td></tr>
@@ -44,6 +43,7 @@
 			<tr><td>10</td><td>Configuration management Tools</td><td>ANSIBLE</td></tr>
 			<tr><td>11</td><td>Monitoring tools</td><td>NAGIOS</td></tr>
 			<tr><td>12</td><td>Containarizartion tools</td><td>Docker</td></tr>
+			<tr><td>12</td><td>Programming</td><td>Java/.net</td></tr>
 		</table>
 	</body>
 </html>
