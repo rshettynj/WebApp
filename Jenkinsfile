@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('checkout') {
       steps {
-        git(url: 'https://github.com/venkatasykam/DevOpsWebApp.git'
+        git(url: 'https://github.com/anooptcs/DevOpsWebApp.git'
       }
     }
     stage('Build') {
