@@ -83,7 +83,7 @@
 					<update>true</update>
 					<path>/${project.artifactId}-${project.version}</path>
 					<username>tomcat</username>
-					<password>s3cret</password>
+					<password>tomcat</password>
 				</configuration>
 			</plugin>
 		</plugins>
