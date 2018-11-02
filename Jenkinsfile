@@ -12,6 +12,8 @@ node('slave1'){
 		def mvnHome = tool name: 'maven-3.5.4', type: 'maven'
         def mvnCMD = "${mvnHome}/bin/mvn"
         sh "${mvnCMD} clean test checkstyle:checkstyle"
+ 	}
+	stage('test Report'){
         checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: '', unHealthy: ''
 	}
 	stage('SonarQb'){
