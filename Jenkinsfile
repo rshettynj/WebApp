@@ -1,5 +1,5 @@
 //Deploy_To_Nexus_Pipeline
-node('master'){
+node('slave1'){
 	stage('Checkout'){
 		//Checkout the code from a GitHub repository
 		git credentialsId: 'jenkinsGitHub', url: 'https://github.com/anooptcs/WebApp.git'
@@ -8,7 +8,8 @@ node('master'){
 	stage('Build'){
 			def mvnHome = tool name: 'maven-3.5.4', type: 'maven'
 			def mvnCMD = "${mvnHome}/bin/mvn"
-			sh "${mvnCMD} clean compile"
+			sh "${mvnCMD} clean compile package"
+			archiveArtifacts '**/*.war'
 		}
 		
 	stage('Static Analysis'){
@@ -28,6 +29,8 @@ node('master'){
 		}
 		
 	stage ('Deploye to stageing'){
+		
+	        copyArtifacts filter: '**/*.war', fingerprintArtifacts: true, projectName: 'Pipeline_As_Code_Build_Test_Deploy', selector: lastSuccessful()
 			build job: 'Deploy-to-staging'
 		}
 		
@@ -44,7 +47,9 @@ node('master'){
 			timeout(time:5, unit:'DAYS'){
 			input message: 'Approve PROD Deployment?'
 		}
+			copyArtifacts filter: '**/*.war', fingerprintArtifacts: true, projectName: 'Pipeline_As_Code_Build_Test_Deploy', selector: lastSuccessful()
 			build job: 'Deploy-to-Prod'
 		}
+
 	
 }
