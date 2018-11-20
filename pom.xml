@@ -115,12 +115,12 @@
 		<repository>
 			<id>deployment</id>
 			<name>Nexus Release Repository</name>
-			<url>http://35.227.53.118:8081/nexus/content/repositories/releases/</url>
+			<url>http://104.196.28.41:8081/nexus/content/repositories/releases/</url>
 		</repository>
 		<snapshotRepository>
 			<id>deployment</id>
 			<name>Nexus Snapshots Repository</name>
-			<url>http://35.227.53.118:8081/nexus/content/repositories/snapshots/</url>
+			<url>http://104.196.28.41:8081/nexus/content/repositories/snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
 	<profiles>
@@ -130,12 +130,12 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 		<properties>
-				<sonar.jdbc.url>jdbc:postgresql://35.227.124.49/sonar</sonar.jdbc.url>
+				<sonar.jdbc.url>jdbc:postgresql://35.190.169.147/sonar</sonar.jdbc.url>
 				<sonar.jdbc.driver>org.postgresql.Driver</sonar.jdbc.driver>
 				<sonar.jdbc.username>sonar</sonar.jdbc.username>
 				<sonar.jdbc.password>sonar</sonar.jdbc.password>
 				<!-- SERVER ON A REMOTE HOST -->
-				<sonar.host.url>http://35.227.124.49:9000</sonar.host.url>		
+				<sonar.host.url>http://35.190.169.147:9000</sonar.host.url>		
 			</properties>
 		</profile>
 		<profile>
