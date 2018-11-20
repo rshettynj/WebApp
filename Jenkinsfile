@@ -30,7 +30,7 @@ node('master'){
 		
 	stage ('Deploye to stageing'){
 		
-	        copyArtifacts filter: '**/*.war', fingerprintArtifacts: true, projectName: 'Pipeline_As_Code_Build_Test_Deploy', selector: lastSuccessful()
+	        //copyArtifacts filter: '**/*.war', fingerprintArtifacts: true, projectName: 'Pipeline_As_Code_Build_Test_Deploy', selector: lastSuccessful()
 			build job: 'Deploy-to-staging'
 		}
 		
@@ -47,7 +47,7 @@ node('master'){
 			timeout(time:5, unit:'DAYS'){
 			input message: 'Approve PROD Deployment?'
 		}
-			copyArtifacts filter: '**/*.war', fingerprintArtifacts: true, projectName: 'Pipeline_As_Code_Build_Test_Deploy', selector: lastSuccessful()
+			//copyArtifacts filter: '**/*.war', fingerprintArtifacts: true, projectName: 'Pipeline_As_Code_Build_Test_Deploy', selector: lastSuccessful()
 			build job: 'Deploy-to-Prod'
 		}
 
