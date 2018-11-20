@@ -1,5 +1,5 @@
 //Deploy_To_Nexus_Pipeline
-node('slave1'){
+node('master'){
 	stage('Checkout'){
 		//Checkout the code from a GitHub repository
 		git credentialsId: 'jenkinsGitHub', url: 'https://github.com/anooptcs/WebApp.git'
