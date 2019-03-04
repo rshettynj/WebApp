@@ -21,7 +21,7 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("inputUname: "+inputUname);
 		System.out.println("inputPwd: "+inputPwd);
 		
-
+//
 		if(userCheck(inputUname,inputPwd)){
 			RequestDispatcher rd=request.getRequestDispatcher("welcomeServlet");  
 			rd.forward(request,response);  
