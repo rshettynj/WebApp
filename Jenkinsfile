@@ -1,78 +1,55 @@
-pipeline {
-  agent any
-  stages {
-    stage('checkout') {
-      steps {
-        git(url: 'https://github.com/venkatasykam/DevOpsWebApp.git'
-      }
-    }
-    stage('Build') {
-      parallel {
-        stage('Build') {
-          steps {
-            echo 'Building my maven web project'
-            bat 'mvn clean package'
-          }
-        }
-        stage('print') {
-          steps {
-            echo 'Hello BlueOcean'
-          }
-        }
-      }
-    }
-    stage('deploy') {
-      parallel {
-        stage('deploy') {
-          steps {
-            timeout(time: 1, activity: true) {
-              echo 'hello world'
-              echo 'namaste world'
-              echo 'Hiii Hello'
-            }
+//Deploy_To_Nexus_Pipeline
+node('master'){
+	stage('Checkout'){
+		//Checkout the code from a GitHub repository
+		git credentialsId: 'jenkinsGitHub', url: 'https://github.com/anooptcs/WebApp.git'
+		}
+		
+	stage('Build'){
+			def mvnHome = tool name: 'maven-3.5.4', type: 'maven'
+			def mvnCMD = "${mvnHome}/bin/mvn"
+			sh "${mvnCMD} clean compile package"
+			archiveArtifacts '**/*.war'
+		}
+		
+	stage('Static Analysis'){
+			def mvnHome = tool name: 'maven-3.5.4', type: 'maven'
+			def mvnCMD = "${mvnHome}/bin/mvn"
+			sh "${mvnCMD} clean test checkstyle:checkstyle"
+		}
+		
+	stage('Analysis Report'){
+			checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: '', unHealthy: ''
+		}
+		
+	stage('SonarQB Analysis'){
+			def mvnHome = tool name: 'maven-3.5.4', type: 'maven'
+			def mvnCMD = "${mvnHome}/bin/mvn"
+			sh "${mvnCMD} clean verify sonar:sonar"
+		}
+		
+	stage ('Deploye to stageing'){
+		
+	        //copyArtifacts filter: '**/*.war', fingerprintArtifacts: true, projectName: 'Pipeline_As_Code_Build_Test_Deploy', selector: lastSuccessful()
+			build job: 'Deploy-to-staging'
+		}
+		
+	stage('Deploy to Nexus'){
+			timeout(time:5, unit:'DAYS'){
+			input message: 'Approve Nexus Deployment?'
+		}
+			def mvnHome = tool name: 'maven-3.5.4', type: 'maven'
+			def mvnCMD = "${mvnHome}/bin/mvn"
+			sh "${mvnCMD} clean deploy"                   
+		}
+		
+	stage ('Deploye to prod'){
+			timeout(time:5, unit:'DAYS'){
+			input message: 'Approve PROD Deployment?'
+		}
+			//copyArtifacts filter: '**/*.war', fingerprintArtifacts: true, projectName: 'Pipeline_As_Code_Build_Test_Deploy', selector: lastSuccessful()
+			build job: 'Deploy-to-Prod'
+		}
 
-            echo 'adab india'
-          }
-        }
-        stage('parallel-deploy') {
-          steps {
-            retry(count: 3) {
-              echo 'hello child'
-            }
-
-          }
-        }
-      }
-    }
-    stage('test') {
-      parallel {
-        stage('test') {
-          steps {
-            build 'afterbackup'
-          }
-        }
-        stage('parallel-test') {
-          steps {
-            sleep(time: 1, unit: 'MINUTES')
-          }
-        }
-      }
-    }
-    stage('stage') {
-      parallel {
-        stage('stage') {
-          steps {
-            pwd(tmp: true)
-            isUnix()
-          }
-        }
-        stage('prallel-stage') {
-          steps {
-            fileExists 'Jenkinsfile'
-            input(message: 'Please enter your valid input', id: 'InputId', submitter: 'devops2018')
-          }
-        }
-      }
-    }
-  }
+	
 }
