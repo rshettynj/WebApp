@@ -146,12 +146,12 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 		<properties>
-				<sonar.jdbc.url>jdbc:postgresql://35.190.169.147/sonar</sonar.jdbc.url>
+				<sonar.jdbc.url>jdbc:postgresql://3.19.57.171/sonar</sonar.jdbc.url>
 				<sonar.jdbc.driver>org.postgresql.Driver</sonar.jdbc.driver>
-				<sonar.jdbc.username>sonar</sonar.jdbc.username>
-				<sonar.jdbc.password>sonar</sonar.jdbc.password>
+				<sonar.jdbc.username>admin</sonar.jdbc.username>
+				<sonar.jdbc.password>admin</sonar.jdbc.password>
 				<!-- SERVER ON A REMOTE HOST -->
-				<sonar.host.url>http://35.190.169.147:9000</sonar.host.url>		
+				<sonar.host.url>http://3.19.57.171:9000</sonar.host.url>		
 			</properties>
 		</profile>
 		<profile>
